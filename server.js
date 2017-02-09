@@ -5,14 +5,15 @@ const routes = require('./routes')
 
 
 const port = process.env.PORT || 3000;
-const noCache = process.env.NOCACHE || false;
+const noCache = process.env.NOCACHE;
+
+console.log('noCache = ', {noCache: noCache})
 
 const app = express();
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
-nunjucks.configure('views', {noCache: noCache});
+nunjucks.configure('views', {noCache: noCache} );
 app.use(express.static(path.join(__dirname, 'node_modules')));
-
 
 
 

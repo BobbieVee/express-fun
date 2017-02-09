@@ -13,8 +13,25 @@
 				<li><a href="/categories">Categories</a></li>
 			</ul>
 		</div>
-		{% block content %}
-		{% endblock %}
-	</div>
+		<div class='row'>
+			<div class='col-sm-6'>
+				{% block content %}
+			{% endblock %}
+			</div>
+			<div class='col-sm-6'>
+				<h2>Data:</h2>			
+				<div class='well'>
+					<form method='get' action='/categories/seed'>
+						<label>Reset Data</label>
+						<button class="btn btn-warning" style="margin-bottom: 10px">Reset</button>
+					</form>
+					<pre>
+							{{categories | dump(2)}}
+					</pre>
+				</div>
+			</div>
+
+		</div>
+			</div>
 </body>
 </html>
