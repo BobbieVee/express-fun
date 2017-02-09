@@ -12,7 +12,7 @@ router.get('/categories/seed', (req,res,next)=> {
 });
 
 router.get('/', (req,res,next)=> {
-	res.render('index');
+	res.render('index', {categories: db.getCategories()});
 });
 
 router.get('/categories', (req,res,next)=> {
@@ -21,7 +21,7 @@ router.get('/categories', (req,res,next)=> {
 
 router.get('/categories/:id', (req,res,next)=> {
 	const category = db.getCategory(req.params.id*1);
-	res.render('category', {category: category, products: category.products} );
+	res.render('category', {category: category, products: category.products, categories: db.getCategories()} );
 });
 router.post('/categories', (req,res,next)=> {
 	db.addCategory(req.body.category);
